@@ -1,6 +1,6 @@
 FLAGS= -g -c -m32
 
-EXE = mssh
+EXE = lab6
 MAIN = ./cscd340Lab6.c
 
 ALIAS = ./alias/alias.o
@@ -8,11 +8,11 @@ HISTORY = ./history/history.o
 LINKEDLIST = ./linkedlist/linkedList.o ./linkedlist/listUtils.o
 PIPES = ./pipes/pipes.o
 PROCESS = ./process/process.o
-TOKENIZE = ./makeargs/makeargs.o
+MAKEARGS = ./tokenize/makeArgs.o
 UTILS= ./utils/myUtils.o ./utils/fileUtil.o
 
-${EXE}:	${UTILS} ${ALIAS} ${HISTORY} ${LINKEDLIST} ${PIPES} ${PROCESS} ${TOKENIZE} ${MAIN}
-	gcc -o ${EXE} ${MAIN} ${UTILS} ${ALIAS} ${HISTORY} ${LINKEDLIST} ${PIPES} ${PROCESS} ${TOKENIZE}
+${EXE}:	${UTILS} ${ALIAS} ${HISTORY} ${LINKEDLIST} ${PIPES} ${PROCESS} ${MAKEARGS} ${MAIN}
+	gcc -o ${EXE} ${MAIN} ${UTILS} ${ALIAS} ${HISTORY} ${LINKEDLIST} ${PIPES} ${PROCESS} ${MAKEARGS}
 
 
 #=======================================================================================================================
@@ -35,8 +35,8 @@ process.o:	./process/process.h ./process/process.c
 
 #=======================================================================================================================
 
-tokenize.o:	./tokenize/makeArgs.h ./tokenize/makeArgs.c
-	gcc  ${FLAGS} ./tokenize/makeargs.c
+tokenize.o:	./tokenize/makeArgs.h ./tokenize/makeArgs.c ./utils/myUtils.h
+	gcc  ${FLAGS} ./tokenize/makeArgs.c
 
 #=======================================================================================================================
 

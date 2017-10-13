@@ -5,7 +5,6 @@
 #ifndef HISTORY_H
 #define HISTORY_H
 
-#include "../linkedList/linkedList.h"
 #include <stdlib.h>
 
 struct history

@@ -8,6 +8,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-void forkIt(char ** argv);
+void forkIt(char ** argv, char ** thePath);
 
 #endif

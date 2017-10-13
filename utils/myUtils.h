@@ -13,9 +13,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX 100
 
+int doesContain(char * toParse, char token);
+int startsWith(const char *a, const char *b);
+void makeLowerCase(char * toParse);
 
 /**
  * @brief Prompts the user for a menu choice.

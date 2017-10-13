@@ -1,6 +1,6 @@
 #include "process.h"
 
-void forkIt(char ** argv)
+void forkIt(char ** argv, char ** thePath)
 {
     int status;
 	pid_t pid = fork();
@@ -8,7 +8,7 @@ void forkIt(char ** argv)
 		waitpid(pid, &status, 0);
 	}
 	else{
-        if(execvp(argv[0], argv) == -1)
+        if(execvpe(argv[0], argv, thePath) == -1)
             exit(-1);
 	}
 }
