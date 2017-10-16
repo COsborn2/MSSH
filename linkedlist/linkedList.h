@@ -169,6 +169,6 @@ void * findIndex(LinkedList * theList, int indexToFind);
 
 void * returnLastItem(LinkedList * theList);
 
-int containsAlias(LinkedList * theList, int (*passToHelper)(char *, void *), char * toParse);
+void replaceAliasMain(LinkedList * theList, char * toParse, int(*doesContainAlias)(char *, void *), void(*replaceString)(char *, const char *, const char *));
 
 #endif // LINKEDLIST_H

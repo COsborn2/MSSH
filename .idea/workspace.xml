@@ -16,9 +16,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShellTest.c" afterPath="$PROJECT_DIR$/ShellTest.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.c" afterPath="$PROJECT_DIR$/alias/alias.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.h" afterPath="$PROJECT_DIR$/alias/alias.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.o" afterPath="$PROJECT_DIR$/alias/alias.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cscd340Lab6.c" afterPath="$PROJECT_DIR$/cscd340Lab6.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tokenize/makeArgs.h" afterPath="$PROJECT_DIR$/tokenize/makeArgs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.c" afterPath="$PROJECT_DIR$/linkedlist/linkedList.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.h" afterPath="$PROJECT_DIR$/linkedlist/linkedList.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.o" afterPath="$PROJECT_DIR$/linkedlist/linkedList.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.c" afterPath="$PROJECT_DIR$/utils/myUtils.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.h" afterPath="$PROJECT_DIR$/utils/myUtils.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.o" afterPath="$PROJECT_DIR$/utils/myUtils.o" />
@@ -36,8 +39,8 @@
       <file leaf-file-name="cscd340Lab6.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cscd340Lab6.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="136" column="17" lean-forward="false" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
+            <state relative-caret-position="51">
+              <caret line="281" column="82" lean-forward="false" selection-start-line="281" selection-start-column="82" selection-end-line="281" selection-end-column="82" />
               <folding>
                 <element signature="e#128#146#0" expanded="true" />
               </folding>
@@ -45,21 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makeArgs.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tokenize/makeArgs.c">
+      <file leaf-file-name="fileUtil.o" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/fileUtil.o">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fileUtil.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/fileUtil.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-494">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,8 +61,8 @@
       <file leaf-file-name="myUtils.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/myUtils.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+            <state relative-caret-position="121">
+              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="147" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -78,28 +71,18 @@
       <file leaf-file-name="ShellTest.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ShellTest.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="208" column="0" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="219" selection-end-column="1" />
+            <state relative-caret-position="169">
+              <caret line="83" column="65" lean-forward="false" selection-start-line="83" selection-start-column="65" selection-end-line="83" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makeArgs.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tokenize/makeArgs.h">
+      <file leaf-file-name="process.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/process/process.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myUtils.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/myUtils.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+            <state relative-caret-position="405">
+              <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -108,8 +91,18 @@
       <file leaf-file-name="linkedList.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-644">
-              <caret line="246" column="17" lean-forward="false" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
+            <state relative-caret-position="3843">
+              <caret line="324" column="10" lean-forward="false" selection-start-line="324" selection-start-column="10" selection-end-line="324" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="linkedList.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="541">
+              <caret line="171" column="158" lean-forward="false" selection-start-line="171" selection-start-column="158" selection-end-line="171" selection-end-column="158" />
               <folding />
             </state>
           </provider>
@@ -118,8 +111,18 @@
       <file leaf-file-name="alias.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alias/alias.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="74" column="58" lean-forward="false" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
+            <state relative-caret-position="915">
+              <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pipes.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pipes/pipes.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1638">
+              <caret line="153" column="42" lean-forward="false" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -128,8 +131,8 @@
       <file leaf-file-name="alias.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alias/alias.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+            <state relative-caret-position="345">
+              <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
               <folding>
                 <element signature="e#82#101#0" expanded="true" />
               </folding>
@@ -165,18 +168,18 @@
         <option value="$PROJECT_DIR$/history/history.h" />
         <option value="$PROJECT_DIR$/history/history.c" />
         <option value="$PROJECT_DIR$/Makefile" />
-        <option value="$PROJECT_DIR$/linkedlist/linkedList.h" />
-        <option value="$PROJECT_DIR$/alias/alias.h" />
         <option value="$PROJECT_DIR$/pipes/pipes.h" />
         <option value="$PROJECT_DIR$/pipes/pipes.c" />
         <option value="$PROJECT_DIR$/process/process.h" />
         <option value="$PROJECT_DIR$/process/process.c" />
-        <option value="$PROJECT_DIR$/linkedlist/linkedList.c" />
         <option value="$PROJECT_DIR$/tokenize/makeArgs.h" />
-        <option value="$PROJECT_DIR$/utils/myUtils.h" />
-        <option value="$PROJECT_DIR$/alias/alias.c" />
-        <option value="$PROJECT_DIR$/ShellTest.c" />
         <option value="$PROJECT_DIR$/utils/myUtils.c" />
+        <option value="$PROJECT_DIR$/utils/myUtils.h" />
+        <option value="$PROJECT_DIR$/alias/alias.h" />
+        <option value="$PROJECT_DIR$/ShellTest.c" />
+        <option value="$PROJECT_DIR$/linkedlist/linkedList.h" />
+        <option value="$PROJECT_DIR$/linkedlist/linkedList.c" />
+        <option value="$PROJECT_DIR$/alias/alias.c" />
         <option value="$PROJECT_DIR$/cscd340Lab6.c" />
       </list>
     </option>
@@ -187,7 +190,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="799" />
@@ -304,12 +307,12 @@
       <workItem from="1507917554168" duration="33171000" />
       <workItem from="1508007521617" duration="21648000" />
       <workItem from="1508127149773" duration="8150000" />
-      <workItem from="1508144730156" duration="3022000" />
+      <workItem from="1508144730156" duration="11613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103112000" />
+    <option name="totallyTimeSpent" value="111703000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -321,7 +324,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="799" extended-state="0" />
+    <frame x="0" y="25" width="1440" height="799" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16165951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -362,14 +365,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/history/history.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/myUtils.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -574,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pipes/pipes.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="153" column="42" lean-forward="false" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/process/process.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -594,16 +582,6 @@
         <state relative-caret-position="525">
           <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="171" column="93" lean-forward="false" selection-start-line="171" selection-start-column="93" selection-end-line="171" selection-end-column="93" />
-          <folding>
-            <element signature="e#333#351#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,14 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process/process.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/fileUtil.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-494">
@@ -663,6 +633,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/myUtils.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="24" column="76" lean-forward="false" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tokenize/makeArgs.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
@@ -671,60 +649,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/myUtils.h">
+    <entry file="file://$PROJECT_DIR$/utils/fileUtil.o">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipes/pipes.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1638">
+          <caret line="153" column="42" lean-forward="false" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/process/process.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/alias/alias.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        <state relative-caret-position="345">
+          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
           <folding>
             <element signature="e#82#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-644">
-          <caret line="246" column="17" lean-forward="false" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alias/alias.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="74" column="58" lean-forward="false" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ShellTest.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="208" column="0" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="219" selection-end-column="1" />
+        <state relative-caret-position="169">
+          <caret line="83" column="65" lean-forward="false" selection-start-line="83" selection-start-column="65" selection-end-line="83" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="171" column="158" lean-forward="false" selection-start-line="171" selection-start-column="158" selection-end-line="171" selection-end-column="158" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/myUtils.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+        <state relative-caret-position="121">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="147" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alias/alias.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3843">
+          <caret line="324" column="10" lean-forward="false" selection-start-line="324" selection-start-column="10" selection-end-line="324" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cscd340Lab6.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="136" column="17" lean-forward="false" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
+        <state relative-caret-position="51">
+          <caret line="281" column="82" lean-forward="false" selection-start-line="281" selection-start-column="82" selection-end-line="281" selection-end-column="82" />
           <folding>
             <element signature="e#128#146#0" expanded="true" />
           </folding>

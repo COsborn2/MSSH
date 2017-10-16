@@ -319,11 +319,16 @@ void * returnLastItem(LinkedList * theList){
     }
     return NULL;
 }
-int containsAlias(LinkedList * theList, int (*passToHelper)(char *, void *), char * toParse){
+
+void replaceAliasMain(LinkedList * theList, char * toParse, int(*doesContainAlias)(char *, void *), void(*replaceString)(char *, const char *, const char *)){
     if(theList->size > 0){
+        //printf("Replace alias LinkedList\n");
         Node * cur = theList->head->next;
         while(cur != NULL){
-            passToHelper(toParse, cur->data);
+            while(doesContainAlias(toParse, cur->data)) {
+                replaceAlias(toParse, cur->data, replaceString);
+            }
+            cur = cur->next;
         }
     }
 }

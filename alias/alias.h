@@ -11,17 +11,17 @@
 
 struct alias
 {
-    char ** theAlias;
     char * AKA;
-    int len;
+    char * theCommand;
 };
 
 typedef struct alias Alias;
 
 void cleanTypeAlias(void * ptr);
-void * buildTypeAlias(char ** tempAlias, char * toAddAKA, int size);
+void * buildTypeAlias(char * theCommand, char * toAddAKA);
 int isSameAlias(const void * p1, const void * p2);
 void printAlias(void * aliasItem, FILE * printTo);
-int containsAliasHelper(char * toParse, void * data);
+int doesContainAlias(char * toParse, void * data);
+void replaceAlias(char * toParse, void * data, void(*str_replace)(char *, const char *, const char *));
 
 #endif //LAB6_ALIAS_H

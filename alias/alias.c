@@ -6,32 +6,21 @@
 
 void cleanTypeAlias(void * ptr){
     Alias * toRemove = (Alias *)ptr;
-    if(toRemove->theAlias != NULL) {
-        int i;
-        for (i = 0; i < toRemove->len; i++) {
-            free(toRemove->theAlias[i]);
-        }
-        free(toRemove->theAlias);
-        toRemove->theAlias = NULL;
-    }
+    free(toRemove->theCommand);
+    toRemove->theCommand = NULL;
+
     free(toRemove->AKA);
     toRemove->AKA = NULL;
+
     free(toRemove);
     toRemove = NULL;
 }
-void * buildTypeAlias(char ** tempAlias, char * toAddAKA, int size) {
-    if (tempAlias != NULL) {
+void * buildTypeAlias(char * theCommand, char * toAddAKA) {
+    if (theCommand != NULL) {
         Alias *newAlias = (Alias *) calloc(1, sizeof(Alias));
 
-        newAlias->theAlias = (char **) calloc(size, sizeof(char *));
-
-        int i;
-        for (i = 0; i < size; i++) {
-            newAlias->theAlias[i] = (char *) calloc(strlen(tempAlias[i]) + 1, sizeof(char));
-            strcpy(newAlias->theAlias[i], tempAlias[i]);
-            //printf("%s\n", newAlias->theAlias[i]);
-        }
-        newAlias->len = size;
+        newAlias->theCommand = (char *) calloc(strlen(theCommand)+1, sizeof(char));
+        strcpy(newAlias->theCommand, theCommand);
 
         newAlias->AKA = (char *) calloc((strlen(toAddAKA) + 1), sizeof(char));
         strcpy(newAlias->AKA, toAddAKA);
@@ -40,10 +29,10 @@ void * buildTypeAlias(char ** tempAlias, char * toAddAKA, int size) {
     }else{
         Alias * newAlias = (Alias *)calloc(1, sizeof(Alias));
 
-        newAlias->theAlias = NULL;
+        newAlias->theCommand = NULL;
+
         newAlias->AKA = (char *) calloc((strlen(toAddAKA) + 1), sizeof(char));
         strcpy(newAlias->AKA, toAddAKA);
-        newAlias->len = size;
 
         return newAlias;
     }
@@ -58,26 +47,34 @@ void printAlias(void * aliasItem, FILE * printTo){
     Alias * toPrint = (Alias *)aliasItem;
     //printf("len: %d\n", toPrint->len);
 
-    if(toPrint->theAlias != NULL) {
-        fprintf(printTo, "alias %s=", toPrint->AKA);
-        if (toPrint->len > 0) {
-            int i;
-            for (i = 0; i < toPrint->len; i++) {
-                if (i + 1 != toPrint->len)
-                    fprintf(printTo, "'%s ", toPrint->theAlias[i]);
-                else
-                    fprintf(printTo, "%s'", toPrint->theAlias[i]);
-            }
-        }
-        fprintf(printTo, "\n");
-    }
+    fprintf(printTo, "alias %s='%s'\n", toPrint->AKA, toPrint->theCommand);
 }
-//take in S as a char * and return it with an alias inside
-void replaceAlias(char * toParse, void * data){
+int doesContainAlias(char * toParse, void * data){
     if(toParse != NULL && data != NULL) {
         Alias *toTest = (Alias *) data;
 
+        char * temp;
+        temp = strstr(toParse, toTest->AKA);
+        if(temp != NULL) {
+            //printf("Alias found\n");
+            return 1;
+        }else {
+            //printf("Alias not found\n");
+            return 0;
+        }
+    }
+}
+void replaceAlias(char * toParse, void * data, void(*str_replace)(char *, const char *, const char *)){
+    if(toParse != NULL && data != NULL) {
+        //printf("In replaceAlias\n");
+        Alias *toTest = (Alias *) data;
+
+        //printf("Before: %s\n", toParse);
         char *foundThis;
         foundThis = strstr(toParse, toTest->AKA);
+        if(foundThis != NULL){  //passed in void * IS an alias inside of toParse
+            str_replace(toParse, toTest->AKA, toTest->theCommand);
+        }
+        //printf("After: %s\n", toParse);
     }
 }

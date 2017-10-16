@@ -18,6 +18,7 @@ void strip(char *array);
 void removeSpaces(char * toParse);
 void clean(int argc, char **argv);
 void removeQuotations(char * toParse);
+void str_replace(char *target, const char *needle, const char *replacement);
 
 int main(){
     /*
@@ -77,13 +78,16 @@ int main(){
         printf("Not found!\n");
     }
      */
-    char test[6] = {'"', '\'', 'l', 'o', 'l', '\0'};
 
-    printf("Before parse: %s\n", test);
+    char temp[100] = {'l', 'l', '\0'};
+    char toFind[100] = {'l', 'l', '\0'};
+    char toReplace[100] = {'t', 'e', 's', 't', ' ', 't', 'h', 'e','\0'};
 
-    removeQuotations(test);
+    printf("Pre parse: %s\n", temp);
 
-    printf("After parse: %s\n", test);
+    str_replace(temp, toFind, toReplace);
+
+    printf("Post parse: %s\n", temp);
 }
 int startsWith(const char *a, const char *b) {
     char temp1[strlen(a)+1];
@@ -217,4 +221,36 @@ void removeQuotations(char * toParse){
         }
         toParse[count] = '\0';
     }
+}
+void str_replace(char *target, const char *needle, const char *replacement)
+{
+    char buffer[1024] = { 0 };
+    char *insert_point = &buffer[0];
+    const char *tmp = target;
+    size_t needle_len = strlen(needle);
+    size_t repl_len = strlen(replacement);
+
+    while (1) {
+        const char *p = strstr(tmp, needle);
+
+        // walked past last occurrence of needle; copy remaining part
+        if (p == NULL) {
+            strcpy(insert_point, tmp);
+            break;
+        }
+
+        // copy part before needle
+        memcpy(insert_point, tmp, p - tmp);
+        insert_point += p - tmp;
+
+        // copy replacement string
+        memcpy(insert_point, replacement, repl_len);
+        insert_point += repl_len;
+
+        // adjust pointers, move on
+        tmp = p + needle_len;
+    }
+
+    // write altered string back to target
+    strcpy(target, buffer);
 }

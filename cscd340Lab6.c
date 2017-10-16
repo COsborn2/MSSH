@@ -34,6 +34,8 @@ int main()
 
     char temporaryS[100];
 
+    char startingHOME[1024];
+
     int argc, pipeCount;
     char **argv = NULL, s[MAX];
     int preCount = 0, postCount = 0;
@@ -99,32 +101,13 @@ int main()
                     if (iATemp2 > 1) {
                         char aliasName[100];
 
-                        char **theCommandToAdd;
-                        int commandArgc;
                         strcpy(aliasName, aliasTemp2[1]);
 
-                        commandArgc = makeargs(aliasTemp[1], &theCommandToAdd, " ");
+                        removeQuotations(aliasTemp[1]);
 
-                        //printf("commandArgc: %d\n", commandArgc);
-
-                        /*
-                        int i;
-                        for(i = 0; i < commandArgc; i++){
-                            printf("%s\n", theCommandToAdd[i]);
-                        }
-                         */
-
-                        int i;
-                        for (i = 0; i < commandArgc; i++) {
-                            removeQuotations(theCommandToAdd[i]);
-                        }
-
-                        removeItem(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)),
-                                   cleanTypeAlias, isSameAlias);
-                        addLast(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)));
-                        clean(commandArgc, theCommandToAdd);
+                        removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTemp[1], aliasName)), cleanTypeAlias, isSameAlias);
+                        addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTemp[1], aliasName)));
                         clean(iATemp2, aliasTemp2);
-                        //clean(iATemp, aliasTemp);
                     }
                 }
                 clean(iATemp, aliasTemp);
@@ -243,8 +226,23 @@ int main()
                 }
             }
         }
+        if(startsWith(s, "cd")){ //change directory command
+            char * temp;
+            temp = getenv("HOME");
+            //printf("%s\n", temp);
 
-        //replace s with aliases
+            char ** cdArgv;
+            int cdArgc = makeargs(s, &cdArgv, " ");
+            //printf("cdArgc: %d\n", cdArgc);
+            if(cdArgc > 1) {
+                chdir(cdArgv[1]);
+            }else{
+                chdir(temp);
+            }
+
+            clean(cdArgc, cdArgv);
+            cdArgv = NULL;
+        }
 
         if (startsWith(s, "alias")) {
             char tempTest[100];
@@ -265,7 +263,7 @@ int main()
                     char aliasName[100];
                     strcpy(aliasName, aliasTemp[1]);
                     removeSpaces(aliasName);
-                    tempHolder = findItem(theAlias, buildNode_Type(buildTypeAlias(NULL, aliasName, 0)), cleanTypeAlias, isSameAlias);
+                    tempHolder = findItem(theAlias, buildNode_Type(buildTypeAlias(NULL, aliasName)), cleanTypeAlias, isSameAlias);
 
                     if(tempHolder != NULL) {
                         printAlias(tempHolder, stdout);
@@ -273,56 +271,42 @@ int main()
                 }
                 clean(iATemp, aliasTemp);
             }else {  //add alias
-                //alias ll='ls -al'
-                char ** aliasTemp;
-                int iATemp;
+                //alias ll='ls -al | wc -w'
+                //printf("Building new Alias\n");
+                char **aliasTempNew;
+                int iATempNew;
 
-                iATemp = makeargs(s, &aliasTemp, "=");
+                iATempNew = makeargs(s, &aliasTempNew, "=");
 
-                //printf("aliasTemp[0]: %s\n", aliasTemp[0]); //alias ll
-                //printf("aliasTemp[1]: %s\n", aliasTemp[1]); //'ls -al'
+                //printf("aliasTemp[0]: %s\n", aliasTempNew[0]); //alias ll
+                //printf("aliasTemp[1]: %s\n", aliasTempNew[1]); //'ls -al | wc -w'
 
 
-                if(iATemp > 1){
-                    char ** aliasTemp2;
-                    int iATemp2;
+                if (iATempNew > 1) {
+                    //printf("In first\n");
+                    char **aliasTemp2New;
+                    int iATemp2New;
 
-                    iATemp2 = makeargs(aliasTemp[0], &aliasTemp2, " ");
+                    iATemp2New = makeargs(aliasTempNew[0], &aliasTemp2New, " ");
 
-                    //printf("aliasTemp2[0]: %s\n", aliasTemp2[0]); //alias
-                    //printf("aliasTemp2[1]: %s\n", aliasTemp2[1]); //ll
+                    //printf("aliasTemp2[0]: %s\n", aliasTemp2New[0]); //alias
+                    //printf("aliasTemp2[1]: %s\n", aliasTemp2New[1]); //ll
 
-                    if(iATemp2 > 1){
+                    if (iATemp2New > 1) {
+                        //printf("In second\n");
                         char aliasName[100];
 
-                        char ** theCommandToAdd;
-                        int commandArgc;
-                        strcpy(aliasName, aliasTemp2[1]);
+                        strcpy(aliasName, aliasTemp2New[1]);
 
-                        commandArgc = makeargs(aliasTemp[1], &theCommandToAdd, " ");
+                        removeQuotations(aliasTempNew[1]);
 
-                        //printf("commandArgc: %d\n", commandArgc);
-
-                        /*
-                        int i;
-                        for(i = 0; i < commandArgc; i++){
-                            printf("%s\n", theCommandToAdd[i]);
-                        }
-                         */
-
-                        int i;
-                        for(i = 0; i < commandArgc; i++){
-                            removeQuotations(theCommandToAdd[i]);
-                        }
-
-                        removeItem(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)), cleanTypeAlias, isSameAlias);
-                        addLast(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)));
-                        clean(commandArgc, theCommandToAdd);
-                        clean(iATemp2, aliasTemp2);
-                        //clean(iATemp, aliasTemp);
+                        removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)), cleanTypeAlias,
+                                   isSameAlias);
+                        addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)));
                     }
+                    clean(iATemp2New, aliasTemp2New);
                 }
-                clean(iATemp, aliasTemp);
+                clean(iATempNew, aliasTempNew);
             }
         }else if(startsWith(s, "unalias")){
             char ** unaliasTemp;
@@ -331,9 +315,9 @@ int main()
             unAliasTemp = makeargs(s, &unaliasTemp, " ");
 
             if(unAliasTemp > 1) {
-                removeItem(theAlias, buildNode_Type(buildTypeAlias(NULL, unaliasTemp[1], 0)), cleanTypeAlias, isSameAlias);
-                //clean(unAliasTemp, unaliasTemp);
+                removeItem(theAlias, buildNode_Type(buildTypeAlias(NULL, unaliasTemp[1])), cleanTypeAlias, isSameAlias);
             }
+            clean(unAliasTemp, unaliasTemp);
         }else if (startsWith(s, "path")) {
             removeSpaces(s);
 
@@ -342,17 +326,12 @@ int main()
             putenv(currentPath);
 
             printPath = 1;
-        }else if(startsWith(s, "cd")){ //change directory command
-            char ** cdArgv;
-            int cdArgc = makeargs(s, &cdArgv, " ");
-            //printf("cdArgc: %d\n", cdArgc);
-            if(cdArgc > 1) {
-                chdir(cdArgv[1]);
-            }
+        }
 
-            clean(cdArgc, cdArgv);
-            cdArgv = NULL;
-        }else if(doesContain(s, "|")) { //contains pipe
+        if(!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd"))
+            replaceAliasMain(theAlias, s, doesContainAlias, str_replace);
+
+        if(doesContain(s, "|")) { //contains pipe
             if (doesContain(s, ">")) { //contains redirect FROM
                 printf("In pipe WITH redirect TO\n");
 
@@ -442,7 +421,7 @@ int main()
             }
             clean(redirectionArgc, redirectionArgv);
         }else {
-            if (!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias")) {
+            if (!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd")) {
                 argc = makeargs(s, &argv, " ");
                 if (argc != -1)
                     forkIt(argv);
@@ -486,7 +465,7 @@ int main()
     }
 
     //printf("Create .mssh_history file\n");
-    FILE * foutHISTORY = fopen(".msshrc_history", "w");
+    FILE * foutHISTORY = fopen(".mssh_history", "w");
     if(foutHISTORY != NULL) {
         //printf(".mssh_history created\n");
 
