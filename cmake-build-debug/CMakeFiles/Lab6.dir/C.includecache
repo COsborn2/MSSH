@@ -11,14 +11,18 @@ stdlib.h
 -
 string.h
 -
-
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./history/history.h
-../linkedList/linkedList.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedList/linkedList.h
-stdlib.h
+stdio.h
 -
 
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedList/linkedList.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./history/history.h
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/linkedList.h
 stdio.h
 -
 stdlib.h
@@ -26,21 +30,15 @@ stdlib.h
 string.h
 -
 
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/requiredIncludes.h
-../alias/alias.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./alias/alias.h
-../history/history.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./history/history.h
-
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./makeargs/makeArgs.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/listUtils.h
 stdio.h
 -
 stdlib.h
 -
 string.h
 -
-../utils/myUtils.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./utils/myUtils.h
+linkedList.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/linkedList.h
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./pipes/pipes.h
 stdio.h
@@ -72,12 +70,24 @@ sys/wait.h
 sys/types.h
 -
 
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./tokenize/makeArgs.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+../utils/myUtils.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./utils/myUtils.h
+
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./utils/myUtils.h
 stdio.h
 -
 stdlib.h
 -
 string.h
+-
+ctype.h
 -
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/alias/alias.c
@@ -89,35 +99,41 @@ stdlib.h
 -
 string.h
 -
+stdio.h
+-
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/cscd340Lab6.c
+ctype.h
+-
+stdio.h
+-
 ./pipes/pipes.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./pipes/pipes.h
 ./utils/myUtils.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./utils/myUtils.h
 ./process/process.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./process/process.h
-./makeargs/makeArgs.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./makeargs/makeArgs.h
-./linkedlist/requiredIncludes.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/requiredIncludes.h
+./tokenize/makeArgs.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./tokenize/makeArgs.h
+./linkedlist/linkedList.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/linkedList.h
+./alias/alias.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./alias/alias.h
+./history/history.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./history/history.h
+./linkedlist/listUtils.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/./linkedlist/listUtils.h
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/history/history.c
 history.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/history/history.h
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/history/history.h
-../linkedList/linkedList.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedList/linkedList.h
-stdlib.h
--
-
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedList/linkedList.h
-stdio.h
--
 stdlib.h
 -
 string.h
+-
+stdio.h
 -
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedlist/linkedList.c
@@ -135,6 +151,8 @@ string.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedlist/listUtils.c
 listUtils.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedlist/listUtils.h
+../history/history.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/history/history.h
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedlist/listUtils.h
 stdio.h
@@ -145,20 +163,6 @@ string.h
 -
 linkedList.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/linkedlist/linkedList.h
-
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/makeargs/makeArgs.c
-makeArgs.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/makeargs/makeArgs.h
-
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/makeargs/makeArgs.h
-stdio.h
--
-stdlib.h
--
-string.h
--
-../utils/myUtils.h
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/utils/myUtils.h
 
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/pipes/pipes.c
 pipes.h
@@ -200,6 +204,20 @@ sys/wait.h
 sys/types.h
 -
 
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/tokenize/makeArgs.c
+makeArgs.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/tokenize/makeArgs.h
+
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/tokenize/makeArgs.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+../utils/myUtils.h
+/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/utils/myUtils.h
+
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/utils/fileUtil.c
 fileUtil.h
 /Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/utils/fileUtil.h
@@ -222,5 +240,7 @@ stdio.h
 stdlib.h
 -
 string.h
+-
+ctype.h
 -
 

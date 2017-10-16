@@ -20,7 +20,7 @@ void strip(char *array)
 
 	  x++;
 
-}// end while
+    }// end while
    
 }// end strip
 
@@ -56,14 +56,14 @@ int menu()
    return choice;
    
 }// end menu
-int doesContain(char * toParse, char token){
+int doesContain(char * toParse, char * token){
     //printf("In doesContain\n");
     //printf("Token: %c\n", token);
     //printf("toParse: %s\n", toParse);
     int i;
     for(i = 0; i < strlen(toParse); i++){
         //printf("Current token: %c\n", toParse[i]);
-        if(toParse[i] == token)
+        if(toParse[i] == *token)
             return 1;
     }
     return 0;
@@ -78,6 +78,9 @@ int startsWith(const char *a, const char *b) {
     makeLowerCase(temp1);
     makeLowerCase(temp2);
 
+    //printf("temp1: %s\n", temp1);
+    //printf("temp2: %s\n", temp2);
+
     if(strncmp(temp1, temp2, strlen(temp2)) == 0) return 1;
     return 0;
 }
@@ -89,4 +92,13 @@ void makeLowerCase(char * toParse){
         }
     }
 }
+void removeSpaces(char * toParse) {
+    int count = 0;
 
+    for (int i = 0; i < strlen(toParse); i++) {
+        if (toParse[i] != ' ') {
+            toParse[count++] = toParse[i];
+        }
+    }
+    toParse[count] = '\0';
+}

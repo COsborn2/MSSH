@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "requiredIncludes.h"
+
 /**
  * @brief The node structure.
  *
@@ -155,6 +157,18 @@ void clearList(LinkedList * theList, void (*removeData)(void *));
  *
  * @warning - The passed in LinkedList * theList is checked - if NULL "Empty List" is printed
  */
-void printList(const LinkedList * theList, void (*convertData)(void *));
+void printList(LinkedList * theList, void (*convertData)(void *, FILE*), FILE * printTo);
+
+int doesMatchLastItem(LinkedList * theList, Node * nn, int (*compare)(const void *, const void *), void (*removeData)(void *));
+
+void printDefinedList(LinkedList * theList, void (*convertData)(void *, FILE*), FILE * printTo, int currentHistoryCount, int histCount);
+
+void * findItem(LinkedList * theList, Node * nn, void (*removeData)(void *), int (*compare)(const void *, const void *));
+
+void * findIndex(LinkedList * theList, int indexToFind);
+
+void * returnLastItem(LinkedList * theList);
+
+int containsAlias(LinkedList * theList, int (*passToHelper)(char *, void *), char * toParse);
 
 #endif // LINKEDLIST_H

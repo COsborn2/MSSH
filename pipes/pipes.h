@@ -12,7 +12,7 @@
 int containsPipe(char *s);
 char ** parsePrePipe(char *s, int * preCount);
 char ** parsePostPipe(char *s, int * postCount);
-void pipeIt(char ** prePipe, char ** postPipe, char ** thePath);
-
+void pipeIt(char ** prePipe, char ** postPipe);
+void pipeItFileOut(char ** prePipe, char ** postPipe, int outFD);
 
 #endif 

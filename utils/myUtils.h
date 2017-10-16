@@ -17,9 +17,10 @@
 
 #define MAX 100
 
-int doesContain(char * toParse, char token);
+int doesContain(char * toParse, char * token);
 int startsWith(const char *a, const char *b);
 void makeLowerCase(char * toParse);
+void removeSpaces(char * toParse);
 
 /**
  * @brief Prompts the user for a menu choice.

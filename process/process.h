@@ -8,6 +8,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-void forkIt(char ** argv, char ** thePath);
+void forkIt(char ** argv);
+void forkItFileOut(char ** argv, int directTo);
+void forkItFileIn(char ** argv, int directTo);
 
 #endif

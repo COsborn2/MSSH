@@ -149,7 +149,7 @@ void removeItem(LinkedList * theList, Node * nn, void (*removeData)(void *), int
             }
         }//end if
     }else{
-        printf("\nList Empty\n\n");
+        //printf("\nList Empty\n\n");
     }//end if
     
     //printf("Freeing nn:\n");
@@ -170,7 +170,7 @@ void clearList(LinkedList * theList, void (*removeData)(void *)){
                 free(temp);
                 temp = NULL;
             }
-            
+
             free(cur);
             cur = NULL;
             free(theList->head);
@@ -180,32 +180,150 @@ void clearList(LinkedList * theList, void (*removeData)(void *)){
         }
     }
 }
-void printList(const LinkedList * theList, void (*convertData)(void *)){
-  if(theList == NULL || theList->size == 0){
-    printf("\nEmpty List\n");
-  }else{
-      printf("Array of size: %d\n", theList->size);
+void printList(LinkedList * theList, void (*convertData)(void *, FILE*), FILE * printTo){
+  if(theList != NULL || theList->size > 0){
     Node * cur = theList->head->next;
     while(cur != NULL){
-      convertData(cur->data);
+      convertData(cur->data, printTo);
       cur = cur->next;
     }
-
-    printf("\n\n");
-      
-      /*
-    printf("List in reverse:\n");
-      cur = theList->head->next;
-      while(cur->next != NULL){
-          cur = cur->next;
-      }
-  
-      printf("At end of list:\n");
-      while(cur != theList->head){
-          convertData(cur->data);
-          cur = cur->prev;
-      }
-      printf("\n");
-      */
   }
+}
+void printDefinedList(LinkedList * theList, void (*convertData)(void *, FILE*), FILE * printTo, int currentHistoryCount, int histCount){
+    int count = 0;
+    if (theList != NULL && theList->size > 0) {
+        Node *cur = theList->head;
+        int printCount = 0;
+        int startingIndex = currentHistoryCount;
+        startingIndex = startingIndex - histCount;
+        int index = 0;
+
+        while (cur != NULL) {
+            if (count < histCount && index > startingIndex) {
+                convertData(cur->data, printTo);
+                count++;
+            }
+            cur = cur->next;
+            printCount++;
+            index++;
+        }
+    }
+}
+int doesMatchLastItem(LinkedList * theList, Node * nn, int (*compare)(const void *, const void *), void (*removeData)(void *)) {
+    if(theList != NULL && theList->size != 0){
+        Node * cur = theList->head->next;
+
+        while(cur->next != NULL){
+            cur = cur->next;
+        }
+
+        //at last node in list
+        if(compare(cur->data, nn->data) == 0){
+            removeData(nn->data);
+            free(nn);
+            nn = NULL;
+            return 1;
+        }else{
+            removeData(nn->data);
+            free(nn);
+            nn = NULL;
+            return 0;
+        }
+    }else{
+        removeData(nn->data);
+        free(nn);
+        nn = NULL;
+        return 0;
+    }
+}
+void * findItem(LinkedList * theList, Node * nn, void (*removeData)(void *), int (*compare)(const void *, const void *)){
+    if (theList->size > 0 && nn != NULL) {
+        if (theList->size == 1) {
+            if(compare(nn->data, theList->head->next->data) == 0){
+                if(nn != NULL) {
+                    removeData(nn->data);
+                    free(nn);
+                    nn = NULL;
+                }
+                return theList->head->next->data;
+            }
+        }else{
+            Node * cur = theList->head;
+
+            int count = 0;
+
+            while (cur != NULL) {
+
+                cur = cur->next;
+
+                if(cur == NULL) {
+                    if(nn != NULL) {
+                        removeData(nn->data);
+                        free(nn);
+                        nn = NULL;
+                    }
+                    break;
+                }
+
+                if (compare(cur->data, nn->data) == 0){
+                    if(nn != NULL) {
+                        removeData(nn->data);
+                        free(nn);
+                        nn = NULL;
+                    }
+                    return cur->data;
+                }//end if
+            }//end while
+        }//end if
+    }
+    if(nn != NULL) {
+        removeData(nn->data);
+        free(nn);
+        nn = NULL;
+    }
+    return NULL;
+}
+void * findIndex(LinkedList * theList, int indexToFind){
+    //printf("Find item at: %d\n", indexToFind);
+    //printf("IndexToFind: %d\n", indexToFind);
+    if (theList->size > 0 && indexToFind >= 0) {
+        if (indexToFind == 0) {
+            //printf("Get index 0\n");
+            return theList->head->next->data;
+        }else{
+            Node * cur = theList->head;
+            int index = -1;
+
+            while (cur != NULL) {
+                if(index == indexToFind){
+                    return cur->data;
+                }
+                cur = cur->next;
+                index++;
+            }//end while
+        }//end if
+    }
+    return NULL;
+}
+void * returnLastItem(LinkedList * theList){
+    if(theList->size > 0){
+        if(theList->size == 1){
+            return theList->head->next->data;
+        }else{
+            Node * cur = theList->head;
+            while(cur->next != NULL){
+                cur = cur->next;
+            }
+            return cur->data;
+        }
+    }
+    return NULL;
+}
+int containsAlias(LinkedList * theList, int (*passToHelper)(char *, void *), char * toParse){
+    if(theList->size > 0){
+        Node * cur = theList->head->next;
+        while(cur != NULL){
+            passToHelper(toParse, cur->data);
+        }
+    }
 }

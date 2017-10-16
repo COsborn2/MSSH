@@ -1,6 +1,6 @@
 FLAGS= -g -c -m32
 
-EXE = lab6
+EXE = mssh
 MAIN = ./cscd340Lab6.c
 
 ALIAS = ./alias/alias.o
