@@ -12,19 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e28f4ce5-a623-444f-b22d-1143bc3dde70" name="Default" comment="Update file structure and if block of main">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shellTest" afterPath="$PROJECT_DIR$/shellTest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShellTest.c" afterPath="$PROJECT_DIR$/ShellTest.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.c" afterPath="$PROJECT_DIR$/alias/alias.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.h" afterPath="$PROJECT_DIR$/alias/alias.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alias/alias.o" afterPath="$PROJECT_DIR$/alias/alias.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cscd340Lab6.c" afterPath="$PROJECT_DIR$/cscd340Lab6.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.c" afterPath="$PROJECT_DIR$/linkedlist/linkedList.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.h" afterPath="$PROJECT_DIR$/linkedlist/linkedList.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist/linkedList.o" afterPath="$PROJECT_DIR$/linkedlist/linkedList.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.c" afterPath="$PROJECT_DIR$/utils/myUtils.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.h" afterPath="$PROJECT_DIR$/utils/myUtils.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/myUtils.o" afterPath="$PROJECT_DIR$/utils/myUtils.o" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +28,8 @@
       <file leaf-file-name="cscd340Lab6.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cscd340Lab6.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="281" column="82" lean-forward="false" selection-start-line="281" selection-start-column="82" selection-end-line="281" selection-end-column="82" />
+            <state relative-caret-position="261">
+              <caret line="342" column="46" lean-forward="false" selection-start-line="342" selection-start-column="46" selection-end-line="342" selection-end-column="46" />
               <folding>
                 <element signature="e#128#146#0" expanded="true" />
               </folding>
@@ -111,8 +100,8 @@
       <file leaf-file-name="alias.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alias/alias.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -307,12 +296,12 @@
       <workItem from="1507917554168" duration="33171000" />
       <workItem from="1508007521617" duration="21648000" />
       <workItem from="1508127149773" duration="8150000" />
-      <workItem from="1508144730156" duration="11613000" />
+      <workItem from="1508144730156" duration="12283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111703000" />
+    <option name="totallyTimeSpent" value="112373000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -325,7 +314,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="799" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16165951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -707,14 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alias/alias.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/linkedlist/linkedList.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3843">
@@ -723,10 +703,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/alias/alias.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cscd340Lab6.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="281" column="82" lean-forward="false" selection-start-line="281" selection-start-column="82" selection-end-line="281" selection-end-column="82" />
+        <state relative-caret-position="261">
+          <caret line="342" column="46" lean-forward="false" selection-start-line="342" selection-start-column="46" selection-end-line="342" selection-end-column="46" />
           <folding>
             <element signature="e#128#146#0" expanded="true" />
           </folding>

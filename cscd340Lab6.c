@@ -296,10 +296,12 @@ int main()
                         //printf("In second\n");
                         char aliasName[100];
 
+                        strip(aliasTemp2New[1]);
                         strcpy(aliasName, aliasTemp2New[1]);
 
                         removeQuotations(aliasTempNew[1]);
 
+                        strip(aliasTempNew[1]);
                         removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)), cleanTypeAlias,
                                    isSameAlias);
                         addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)));
@@ -339,11 +341,8 @@ int main()
 
                 if(redirectionArgc > 1) {
                     strip(redirectionArgv[1]);
-                    printf("Attempting to use file: %s\n", redirectionArgv[1]);
                     FILE * redirectTo = fopen(redirectionArgv[1], "w");
                     int redirectOutFD = fileno(redirectTo);
-
-                    printf("redirectionArgv[0]: %s\n", redirectionArgv[0]);
 
                     prePipe = parsePrePipe(s, &preCount);
                     postPipe = parsePostPipe(s, &postCount);
