@@ -43,6 +43,7 @@ int main()
     int redirectionArgc;
 
     char temp[100];
+    char tempSpaces[100];
 
     //handle opening msshrc
     FILE * finMSSHRC = fopen(".msshrc", "r");
@@ -52,6 +53,7 @@ int main()
 
         fgets(temp, MAX, finMSSHRC);
         strip(temp);
+        strcpy(tempSpaces, temp);
         removeSpaces(temp);
 
         while(!feof(finMSSHRC)){
@@ -74,17 +76,70 @@ int main()
                 histFileCount = atoi(temp2[1]);
                 //printf("histFileCount: %d\n", histFileCount);
                 clean(tempCount, temp2);
-            }else if(startsWith(temp, "alias")){
-                //find Alias
-            }else if(startsWith(temp, "path")){
-                strcpy(currentPath, temp);
+            }else if(startsWith(temp, "alias")) {
+                //alias ll='ls -al'
+                char **aliasTemp;
+                int iATemp;
 
-                putenv(currentPath);
-                printPath = 1;
+                iATemp = makeargs(tempSpaces, &aliasTemp, "=");
+
+                //printf("aliasTemp[0]: %s\n", aliasTemp[0]); //alias ll
+                //printf("aliasTemp[1]: %s\n", aliasTemp[1]); //'ls -al'
+
+
+                if (iATemp > 1) {
+                    char **aliasTemp2;
+                    int iATemp2;
+
+                    iATemp2 = makeargs(aliasTemp[0], &aliasTemp2, " ");
+
+                    //printf("aliasTemp2[0]: %s\n", aliasTemp2[0]); //alias
+                    //printf("aliasTemp2[1]: %s\n", aliasTemp2[1]); //ll
+
+                    if (iATemp2 > 1) {
+                        char aliasName[100];
+
+                        char **theCommandToAdd;
+                        int commandArgc;
+                        strcpy(aliasName, aliasTemp2[1]);
+
+                        commandArgc = makeargs(aliasTemp[1], &theCommandToAdd, " ");
+
+                        //printf("commandArgc: %d\n", commandArgc);
+
+                        /*
+                        int i;
+                        for(i = 0; i < commandArgc; i++){
+                            printf("%s\n", theCommandToAdd[i]);
+                        }
+                         */
+
+                        int i;
+                        for (i = 0; i < commandArgc; i++) {
+                            removeQuotations(theCommandToAdd[i]);
+                        }
+
+                        removeItem(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)),
+                                   cleanTypeAlias, isSameAlias);
+                        addLast(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)));
+                        clean(commandArgc, theCommandToAdd);
+                        clean(iATemp2, aliasTemp2);
+                        //clean(iATemp, aliasTemp);
+                    }
+                }
+                clean(iATemp, aliasTemp);
+            }else if(startsWith(temp, "path")){
+                if(doesContain(temp, "!")) {
+                    strcpy(currentPath, temp);
+
+                    putenv(currentPath);
+                    printPath = 1;
+                }
             }
 
             fgets(temp, MAX, finMSSHRC);
             strip(temp);
+            strcpy(tempSpaces, temp);
             removeSpaces(temp);
         }
     }
@@ -254,6 +309,11 @@ int main()
                             printf("%s\n", theCommandToAdd[i]);
                         }
                          */
+
+                        int i;
+                        for(i = 0; i < commandArgc; i++){
+                            removeQuotations(theCommandToAdd[i]);
+                        }
 
                         removeItem(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)), cleanTypeAlias, isSameAlias);
                         addLast(theAlias, buildNode_Type(buildTypeAlias(theCommandToAdd, aliasName, commandArgc)));

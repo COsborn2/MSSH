@@ -102,3 +102,15 @@ void removeSpaces(char * toParse) {
     }
     toParse[count] = '\0';
 }
+void removeQuotations(char * toParse){
+    if(toParse != NULL){
+        int count = 0;
+
+        for (int i = 0; i < strlen(toParse); i++) {
+            if (toParse[i] != '\'' && toParse[i] != '"') {
+                toParse[count++] = toParse[i];
+            }
+        }
+        toParse[count] = '\0';
+    }
+}

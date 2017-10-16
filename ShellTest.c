@@ -49,7 +49,6 @@ int main(){
      * test substring cut
      */
 
-    char test[16] = {'a', 'l', 'i', 'a', 's', ' ', 'l', 'l', '=', 'l', 's', ' ', '-', 'a', 'l', '\0'};
     /*
     char ** argv = NULL;
     int argc;
@@ -78,7 +77,7 @@ int main(){
         printf("Not found!\n");
     }
      */
-    char test[100] = {"'", 'l', '"', 'o', 'l', '"', '\0'};
+    char test[6] = {'"', '\'', 'l', 'o', 'l', '\0'};
 
     printf("Before parse: %s\n", test);
 
@@ -208,16 +207,14 @@ void clean(int argc, char **argv)
     argv = NULL;
 }// end clean
 void removeQuotations(char * toParse){
-    char temp[strlen(toParse)+1];
     if(toParse != NULL){
-        int index = 0;
-        int i;
-        for(i = 0; i < strlen(toParse); i++){
-            if(toParse[i] != '"' && toParse[i] != "'"){
-                temp[index] = toParse[i];
-                index++;
+        int count = 0;
+
+        for (int i = 0; i < strlen(toParse); i++) {
+            if (toParse[i] != '\'' && toParse[i] != '"') {
+                toParse[count++] = toParse[i];
             }
         }
-        strcmp(toParse, temp);
+        toParse[count] = '\0';
     }
 }

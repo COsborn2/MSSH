@@ -72,15 +72,12 @@ void printAlias(void * aliasItem, FILE * printTo){
         fprintf(printTo, "\n");
     }
 }
-int containsAliasHelper(char * toParse, void * data){
+//take in S as a char * and return it with an alias inside
+void replaceAlias(char * toParse, void * data){
     if(toParse != NULL && data != NULL) {
         Alias *toTest = (Alias *) data;
 
         char *foundThis;
         foundThis = strstr(toParse, toTest->AKA);
-        if(foundThis != NULL)
-            return 1;
-        else
-            return 0;
     }
 }

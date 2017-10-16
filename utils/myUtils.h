@@ -21,6 +21,7 @@ int doesContain(char * toParse, char * token);
 int startsWith(const char *a, const char *b);
 void makeLowerCase(char * toParse);
 void removeSpaces(char * toParse);
+void removeQuotations(char * toParse);
 
 /**
  * @brief Prompts the user for a menu choice.
