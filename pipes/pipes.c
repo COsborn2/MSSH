@@ -18,6 +18,7 @@ int containsPipe(char *s){
     return count;
 }
 char ** parsePrePipe(char *s, int * preCount){
+    //printf("parsePrePipe S: %s\n", s);
     char ** argv;
     int argc;
 
@@ -34,15 +35,15 @@ char ** parsePrePipe(char *s, int * preCount){
     parsedString[*preCount] = '\0';
 
     argc = makeargs(parsedString, &argv, " ");
+    /*
+    printf("prePipe array is size: %d\n", argc);
+    int j;
+    for(i = 0; i < argc; i++){
+        printf("%s\n", argv[i]);
+    }
 
-    //printf("prePipe array is size: %d\n", argc);
-    //int j;
-    //for(i = 0; i < argc; i++){
-    //    printf("%s\n", argv[i]);
-    //}
-
-    //printf("\n");
-
+    printf("\n");
+    */
     *preCount = argc;
 
     return argv;
@@ -67,15 +68,15 @@ char ** parsePostPipe(char *s, int * postCount){
     //printf("parsedString: %s\n", parsedString);
 
     argc = makeargs(parsedString, &argv, " ");
+    /*
+    printf("postPipe array is size: %d\n", argc);
+    int j;
+    for(i = 0; i < argc; i++){
+        printf("%s\n", argv[i]);
+    }
 
-    //printf("postPipe array is size: %d\n", argc);
-    //int j;
-    //for(i = 0; i < argc; i++){
-    //    printf("%s\n", argv[i]);
-    //}
-
-    //printf("\n");
-
+    printf("\n");
+    */
 
     *postCount = argc;
 
@@ -173,6 +174,9 @@ void pipeItFileOut(char ** prePipe, char ** postPipe, int outFD){
     }
 }
 void pipeItFileIn(char ** prePipe, char ** postPipe, int outFD){
+    //printf("PrePipe: %s\n", prePipe[0]);
+    //printf("PostPipe: %s\n", postPipe[0]);
+
     pid_t pid2;
     int fd[2], res, status2;
 

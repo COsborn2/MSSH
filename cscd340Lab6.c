@@ -139,9 +139,10 @@ int main()
         strip(temp);
 
         while(!feof(finHISTORY)){
-            currentHistoryCount++;
-            addLast(theHistory, buildNode_Type(buildTypeHistory(temp)));
-
+            if(strlen(temp) > 0) {
+                currentHistoryCount++;
+                addLast(theHistory, buildNode_Type(buildTypeHistory(temp)));
+            }
             fgets(temp, MAX, finHISTORY);
             strip(temp);
         }
@@ -154,7 +155,7 @@ int main()
     strcpy(temporaryS, s);
     makeLowerCase(temporaryS);
 
-    if(doesMatchLastItem(theHistory, buildNode_Type(buildTypeHistory(temporaryS)), isSameHistory, cleanTypeHistory) == 0 && strcmp(s, "exit") != 0 && !startsWith(s, "!")){
+    if(strlen(s) > 0 && doesMatchLastItem(theHistory, buildNode_Type(buildTypeHistory(temporaryS)), isSameHistory, cleanTypeHistory) == 0 && strcmp(s, "exit") != 0 && !startsWith(s, "!")){
         currentHistoryCount++;
         addLast(theHistory, buildNode_Type(buildTypeHistory(s)));
     }
@@ -398,22 +399,46 @@ int main()
                 }
             } else if (doesContain(s, "<")) {    //contains redirect TO
                 //printf("In pipe WITH redirect FROM\n");
+
+                //cat < in.txt | wc -w
+
                 redirectionArgc = makeargs(s, &redirectionArgv, "<");
+
+                //printf("redirectionArgv[0]: %s\n", redirectionArgv[0]); //cat
+                //printf("redirectionArgv[1]: %s\n", redirectionArgv[1]); //in.txt | wc -w
 
                 if(redirectionArgc > 1) {
                     strip(redirectionArgv[1]);
-                    FILE * redirectFrom = fopen(redirectionArgv[1], "r");
-                    if(redirectFrom != NULL) {
-                        int redirectOutFD = fileno(redirectFrom);
 
-                        prePipe = parsePrePipe(redirectionArgv[0], &preCount);
-                        postPipe = parsePostPipe(redirectionArgv[0], &postCount);
-                        pipeItFileIn(prePipe, postPipe, redirectOutFD);
-                        clean(preCount, prePipe);
-                        clean(postCount, postPipe);
+                    char ** redirectionArgv2;
+                    int redirectionArgc2;
 
-                        fclose(redirectFrom);
+                    redirectionArgc2 = makeargs(redirectionArgv[1], &redirectionArgv2, "|");
+
+                    if(redirectionArgc2 > 1){
+                        removeTrailingSpaces(redirectionArgv2[0]);
+
+
+                        //printf("redirectionArgv2[0]: %s\n", redirectionArgv2[0]);
+                        //printf("redirectionArgv2[1]: %s\n", redirectionArgv2[1]);
+
+                        FILE * redirectTo = fopen(redirectionArgv2[0], "r");
+                        if(redirectTo != NULL) {
+                            int redirectOutFD = fileno(redirectTo);
+
+                            //prePipe redirectionArgv[0]
+                            //postPipe redirectionArgv2[1]
+                            preCount = makeargs(redirectionArgv[0], &prePipe, " ");
+                            postCount = makeargs(redirectionArgv2[1], &postPipe, " ");
+                            //printf("About to send to pipeIt\n");
+                            pipeItFileIn(prePipe, postPipe, redirectOutFD);
+                            clean(preCount, prePipe);
+                            clean(postCount, postPipe);
+
+                            fclose(redirectTo);
+                        }
                     }
+                    clean(redirectionArgc2, redirectionArgv2);
                 }
 
                 clean(redirectionArgc, redirectionArgv);
@@ -526,7 +551,7 @@ int main()
         strcpy(temporaryS, s);
         makeLowerCase(temporaryS);
 
-        if(doesMatchLastItem(theHistory, buildNode_Type(buildTypeHistory(temporaryS)), isSameHistory, cleanTypeHistory) == 0 && strcmp(s, "exit") != 0 && !startsWith(s, "!")){
+        if(strlen(s) > 0 && doesMatchLastItem(theHistory, buildNode_Type(buildTypeHistory(temporaryS)), isSameHistory, cleanTypeHistory) == 0 && strcmp(s, "exit") != 0 && !startsWith(s, "!")){
             currentHistoryCount++;
 
             addLast(theHistory, buildNode_Type(buildTypeHistory(s)));

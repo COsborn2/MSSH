@@ -24,6 +24,7 @@ void removeSpaces(char * toParse);
 void removeQuotations(char * toParse);
 void str_replace(char *toParse, const char *toReplace, const char *replaceWith);
 void removePointers(char * toParse);
+void removeTrailingSpaces(char* source);
 
 /**
  * @brief Prompts the user for a menu choice.

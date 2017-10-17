@@ -19,6 +19,7 @@ void removeSpaces(char * toParse);
 void clean(int argc, char **argv);
 void removeQuotations(char * toParse);
 void str_replace(char *target, const char *needle, const char *replacement);
+void removeTrailingSpaces(char* source);
 
 int main(){
     /*
@@ -79,15 +80,7 @@ int main(){
     }
      */
 
-    char temp[100] = {'l', 'l', '\0'};
-    char toFind[100] = {'l', 'l', '\0'};
-    char toReplace[100] = {'t', 'e', 's', 't', ' ', 't', 'h', 'e','\0'};
-
-    printf("Pre parse: %s\n", temp);
-
-    str_replace(temp, toFind, toReplace);
-
-    printf("Post parse: %s\n", temp);
+    char temp[100] = {' ', 'l', 's', ' ', '-', 'a', 'l', ' ', '\0'};
 }
 int startsWith(const char *a, const char *b) {
     char temp1[strlen(a)+1];
