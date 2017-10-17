@@ -79,45 +79,49 @@ int main()
                 //printf("histFileCount: %d\n", histFileCount);
                 clean(tempCount, temp2);
             }else if(startsWith(temp, "alias")) {
-                //alias ll='ls -al'
-                char **aliasTemp;
-                int iATemp;
+                //alias ll='ls -al | wc -w'
+                //printf("Building new Alias\n");
+                char **aliasTempNew;
+                int iATempNew;
 
-                iATemp = makeargs(tempSpaces, &aliasTemp, "=");
+                iATempNew = makeargs(temp, &aliasTempNew, "=");
 
-                //printf("aliasTemp[0]: %s\n", aliasTemp[0]); //alias ll
-                //printf("aliasTemp[1]: %s\n", aliasTemp[1]); //'ls -al'
+                //printf("aliasTemp[0]: %s\n", aliasTempNew[0]); //alias ll
+                //printf("aliasTemp[1]: %s\n", aliasTempNew[1]); //'ls -al | wc -w'
 
 
-                if (iATemp > 1) {
-                    char **aliasTemp2;
-                    int iATemp2;
+                if (iATempNew > 1) {
+                    //printf("In first\n");
+                    char **aliasTemp2New;
+                    int iATemp2New;
 
-                    iATemp2 = makeargs(aliasTemp[0], &aliasTemp2, " ");
+                    iATemp2New = makeargs(aliasTempNew[0], &aliasTemp2New, " ");
 
-                    //printf("aliasTemp2[0]: %s\n", aliasTemp2[0]); //alias
-                    //printf("aliasTemp2[1]: %s\n", aliasTemp2[1]); //ll
+                    //printf("aliasTemp2[0]: %s\n", aliasTemp2New[0]); //alias
+                    //printf("aliasTemp2[1]: %s\n", aliasTemp2New[1]); //ll
 
-                    if (iATemp2 > 1) {
+                    if (iATemp2New > 1) {
+                        //printf("In second\n");
                         char aliasName[100];
 
-                        strcpy(aliasName, aliasTemp2[1]);
+                        strip(aliasTemp2New[1]);
+                        strcpy(aliasName, aliasTemp2New[1]);
 
-                        removeQuotations(aliasTemp[1]);
+                        strip(aliasTempNew[1]);
+                        removeQuotations(aliasTempNew[1]);
 
-                        removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTemp[1], aliasName)), cleanTypeAlias, isSameAlias);
-                        addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTemp[1], aliasName)));
-                        clean(iATemp2, aliasTemp2);
+                        removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)), cleanTypeAlias,
+                                   isSameAlias);
+                        addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)));
                     }
+                    clean(iATemp2New, aliasTemp2New);
                 }
-                clean(iATemp, aliasTemp);
+                clean(iATempNew, aliasTempNew);
             }else if(startsWith(temp, "path")){
-                if(doesContain(temp, "!")) {
-                    strcpy(currentPath, temp);
+                strcpy(currentPath, temp);
 
-                    putenv(currentPath);
-                    printPath = 1;
-                }
+                putenv(currentPath);
+                printPath = 1;
             }
 
             fgets(temp, MAX, finMSSHRC);
@@ -133,7 +137,6 @@ int main()
 
         fgets(temp, MAX, finHISTORY);
         strip(temp);
-        //removeSpaces(temp);
 
         while(!feof(finHISTORY)){
             currentHistoryCount++;
@@ -141,7 +144,6 @@ int main()
 
             fgets(temp, MAX, finHISTORY);
             strip(temp);
-            //removeSpaces(temp);
         }
     }
 
@@ -297,11 +299,12 @@ int main()
                         char aliasName[100];
 
                         strip(aliasTemp2New[1]);
+                        removeSpaces(aliasTemp2New[1]);
                         strcpy(aliasName, aliasTemp2New[1]);
 
+                        strip(aliasTempNew[1]);
                         removeQuotations(aliasTempNew[1]);
 
-                        strip(aliasTempNew[1]);
                         removeItem(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)), cleanTypeAlias,
                                    isSameAlias);
                         addLast(theAlias, buildNode_Type(buildTypeAlias(aliasTempNew[1], aliasName)));
@@ -329,34 +332,72 @@ int main()
 
             printPath = 1;
         }
-        if(!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd"))
+
+        if(!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd")) {
+            //printf("S before: %s\n", s);
             replaceAliasMain(theAlias, s, doesContainAlias, str_replace);
+            //printf("S after: %s\n", s);
+        }
 
         if(doesContain(s, "|")) { //contains pipe
             if (doesContain(s, ">")) { //contains redirect FROM
-                printf("In pipe WITH redirect TO\n");
+                char * temp;
+                temp = strstr(s, ">>");
+                if(temp != NULL){
+                    //printf("In pipe WITH redirect TO - append\n");
 
-                redirectionArgc = makeargs(s, &redirectionArgv, ">");
+                    //ls -al | wc -w >> test.txt
 
-                if(redirectionArgc > 1) {
-                    strip(redirectionArgv[1]);
-                    FILE * redirectTo = fopen(redirectionArgv[1], "w");
-                    if(redirectTo != NULL) {
-                        int redirectOutFD = fileno(redirectTo);
+                    redirectionArgc = makeargs(s, &redirectionArgv, ">");
 
-                        prePipe = parsePrePipe(s, &preCount);
-                        postPipe = parsePostPipe(s, &postCount);
-                        pipeItFileOut(prePipe, postPipe, redirectOutFD);
-                        clean(preCount, prePipe);
-                        clean(postCount, postPipe);
+                    if(redirectionArgc > 1) {
+                        strip(redirectionArgv[1]);//test.txt
+                        removePointers(redirectionArgv[1]);
+                        removeSpaces(redirectionArgv[1]);
+                        //printf("redirectionArgv[1]: %s\n", redirectionArgv[1]);
+                        FILE * redirectTo = fopen(redirectionArgv[1], "a");
+                        if(redirectTo != NULL) {
+                            int redirectOutFD = fileno(redirectTo);
+                            removePointers(redirectionArgv[0]);
 
-                        fclose(redirectTo);
+                            prePipe = parsePrePipe(redirectionArgv[0], &preCount);
+                            postPipe = parsePostPipe(redirectionArgv[0], &postCount);
+                            pipeItFileOut(prePipe, postPipe, redirectOutFD);
+                            clean(preCount, prePipe);
+                            clean(postCount, postPipe);
+
+                            fclose(redirectTo);
+                        }
                     }
-                }
 
-                clean(redirectionArgc, redirectionArgv);
+                    clean(redirectionArgc, redirectionArgv);
+                }else{
+                    //printf("In pipe WITH redirect TO\n");
+
+                    redirectionArgc = makeargs(s, &redirectionArgv, ">");
+
+                    if(redirectionArgc > 1) {
+                        strip(redirectionArgv[1]);
+                        removeSpaces(redirectionArgv[1]);
+                        //printf("redirectionArgv[1]: %s\n", redirectionArgv[1]);
+                        FILE * redirectTo = fopen(redirectionArgv[1], "w");
+                        if(redirectTo != NULL) {
+                            int redirectOutFD = fileno(redirectTo);
+
+                            prePipe = parsePrePipe(redirectionArgv[0], &preCount);
+                            postPipe = parsePostPipe(redirectionArgv[0], &postCount);
+                            pipeItFileOut(prePipe, postPipe, redirectOutFD);
+                            clean(preCount, prePipe);
+                            clean(postCount, postPipe);
+
+                            fclose(redirectTo);
+                        }
+                    }
+
+                    clean(redirectionArgc, redirectionArgv);
+                }
             } else if (doesContain(s, "<")) {    //contains redirect TO
-                printf("In pipe WITH redirect FROM\n");
+                //printf("In pipe WITH redirect FROM\n");
                 redirectionArgc = makeargs(s, &redirectionArgv, "<");
 
                 if(redirectionArgc > 1) {
@@ -365,8 +406,8 @@ int main()
                     if(redirectFrom != NULL) {
                         int redirectOutFD = fileno(redirectFrom);
 
-                        prePipe = parsePrePipe(s, &preCount);
-                        postPipe = parsePostPipe(s, &postCount);
+                        prePipe = parsePrePipe(redirectionArgv[0], &preCount);
+                        postPipe = parsePostPipe(redirectionArgv[0], &postCount);
                         pipeItFileIn(prePipe, postPipe, redirectOutFD);
                         clean(preCount, prePipe);
                         clean(postCount, postPipe);
@@ -385,30 +426,62 @@ int main()
                 clean(postCount, postPipe);
             }
         }else if(doesContain(s, ">")){ //contains redirect FROM & NO Pipe
-            //printf("NO pipe redirect from\n");
-            redirectionArgc = makeargs(s, &redirectionArgv, ">");
+            char * temp;
+            temp = strstr(s, ">>");
+            if(temp != NULL) {
+                //printf("NO pipe redirect from - append\n");
+                redirectionArgc = makeargs(s, &redirectionArgv, ">");
 
-            if(redirectionArgc > 1){
-                strip(redirectionArgv[0]);
-                strip(redirectionArgv[1]);
+                if (redirectionArgc > 1) {
+                    strip(redirectionArgv[0]);
+                    strip(redirectionArgv[1]);
 
-                strip(redirectionArgv[1]);
-                removeSpaces(redirectionArgv[1]);
-                //printf("Create FILE: %s\n", redirectionArgv[1]);
-                FILE * redirectTo = fopen(redirectionArgv[1], "w");
+                    removePointers(redirectionArgv[0]);
+                    removePointers(redirectionArgv[1]);
 
-                if(redirectTo != NULL) {
-                    argc = makeargs(redirectionArgv[0], &argv, " ");
-                    if (argc != -1)
-                        forkItFileOut(argv, fileno(redirectTo));
+                    strip(redirectionArgv[1]);
+                    removeSpaces(redirectionArgv[1]);
+                    //printf("Create FILE: %s\n", redirectionArgv[1]);
+                    FILE *redirectTo = fopen(redirectionArgv[1], "a");
 
-                    clean(argc, argv);
-                    argv = NULL;
+                    if (redirectTo != NULL) {
+                        argc = makeargs(redirectionArgv[0], &argv, " ");
+                        if (argc != -1)
+                            forkItFileOut(argv, fileno(redirectTo));
 
-                    fclose(redirectTo);
+                        clean(argc, argv);
+                        argv = NULL;
+
+                        fclose(redirectTo);
+                    }
                 }
+                clean(redirectionArgc, redirectionArgv);
+            }else{
+                //printf("NO pipe redirect from\n");
+                redirectionArgc = makeargs(s, &redirectionArgv, ">");
+
+                if (redirectionArgc > 1) {
+                    strip(redirectionArgv[0]);
+                    strip(redirectionArgv[1]);
+
+                    strip(redirectionArgv[1]);
+                    removeSpaces(redirectionArgv[1]);
+                    //printf("Create FILE: %s\n", redirectionArgv[1]);
+                    FILE *redirectTo = fopen(redirectionArgv[1], "w");
+
+                    if (redirectTo != NULL) {
+                        argc = makeargs(redirectionArgv[0], &argv, " ");
+                        if (argc != -1)
+                            forkItFileOut(argv, fileno(redirectTo));
+
+                        clean(argc, argv);
+                        argv = NULL;
+
+                        fclose(redirectTo);
+                    }
+                }
+                clean(redirectionArgc, redirectionArgv);
             }
-            clean(redirectionArgc, redirectionArgv);
         }else if(doesContain(s, "<")){ //contains redirect TO & NO Pipe
             //printf("NO pipe redirect to\n");
             redirectionArgc = makeargs(s, &redirectionArgv, "<");

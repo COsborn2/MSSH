@@ -22,7 +22,8 @@ int startsWith(const char *a, const char *b);
 void makeLowerCase(char * toParse);
 void removeSpaces(char * toParse);
 void removeQuotations(char * toParse);
-void str_replace(char *target, const char *needle, const char *replacement);
+void str_replace(char *toParse, const char *toReplace, const char *replaceWith);
+void removePointers(char * toParse);
 
 /**
  * @brief Prompts the user for a menu choice.

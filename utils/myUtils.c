@@ -114,35 +114,42 @@ void removeQuotations(char * toParse){
         toParse[count] = '\0';
     }
 }
-void str_replace(char *target, const char *needle, const char *replacement)
-{
-    char buffer[1024] = { 0 };
-    char *insert_point = &buffer[0];
-    const char *tmp = target;
-    size_t needle_len = strlen(needle);
-    size_t repl_len = strlen(replacement);
+void str_replace(char *toParse, const char *toReplace, const char *replaceWith) {
+    char temp[1024] = { 0 };
+    char * startAt = &temp[0];
+    const char * tempPtr = toParse;
+    size_t lengthOfToReplace = strlen(toReplace);
+    size_t lengthOfReplaceWith = strlen(replaceWith);
 
     while (1) {
-        const char *p = strstr(tmp, needle);
+        const char *tempPtr2 = strstr(tempPtr, toReplace);
 
-        // walked past last occurrence of needle; copy remaining part
-        if (p == NULL) {
-            strcpy(insert_point, tmp);
+        if (tempPtr2 == NULL) {
+            strcpy(startAt, tempPtr);
             break;
         }
 
-        // copy part before needle
-        memcpy(insert_point, tmp, p - tmp);
-        insert_point += p - tmp;
+        memcpy(startAt, tempPtr, tempPtr2 - tempPtr);
+        startAt += tempPtr2 - tempPtr;
 
-        // copy replacement string
-        memcpy(insert_point, replacement, repl_len);
-        insert_point += repl_len;
-
-        // adjust pointers, move on
-        tmp = p + needle_len;
+        memcpy(startAt, replaceWith, lengthOfReplaceWith);
+        startAt += lengthOfReplaceWith;
+        
+        tempPtr = tempPtr2 + lengthOfToReplace;
     }
 
-    // write altered string back to target
-    strcpy(target, buffer);
+    // write altered string back to toParse
+    strcpy(toParse, temp);
+}
+void removePointers(char * toParse){
+    if(toParse != NULL){
+        int count = 0;
+
+        for (int i = 0; i < strlen(toParse); i++) {
+            if (toParse[i] != '>') {
+                toParse[count++] = toParse[i];
+            }
+        }
+        toParse[count] = '\0';
+    }
 }

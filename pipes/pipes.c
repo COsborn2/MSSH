@@ -2,7 +2,6 @@
 // Created by Cameron Osborn on 10/8/17.
 //
 
-#define _GNU_SOURCE
 #include "pipes.h"
 #include "../tokenize/makeArgs.h"
 
@@ -148,20 +147,25 @@ void pipeItFileOut(char ** prePipe, char ** postPipe, int outFD){
 
         if (pid != 0) {    //parent
             waitpid(pid, &status, 0);
-            close(fd[1]);
+            close(fd[1]);   //closing pipe write
             close(0);   //close stdin
-            dup(fd[0]);
-            close(fd[0]);   //close unused
+            dup(fd[0]); //replace stdin with pipe read
+            close(fd[0]);
+
+            close(1);
+            dup(outFD);
+
             execvp(postPipe[0], postPipe);
 
             exit(-1);
         }
         else {  //child
-            close(fd[0]);
+            close(fd[0]);   //close pipe read
             close(1);   //close stdout
-            dup(fd[1]); //stout now points to stdin
-            close(fd[1]);   //close unused
+            dup(fd[1]); //replace stdout w/ pipe write
+            close(fd[1]);
             execvp(prePipe[0], prePipe);
+
             exit(-1);
         }
     }else{
@@ -205,7 +209,12 @@ void pipeItFileIn(char ** prePipe, char ** postPipe, int outFD){
             close(1);   //close stdout
             dup(fd[1]); //stout now points to stdin
             close(fd[1]);   //close unused
+
+            close(0);
+            dup(outFD);
+
             execvp(prePipe[0], prePipe);
+
             exit(-1);
         }
     }else{
