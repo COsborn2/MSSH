@@ -329,7 +329,6 @@ int main()
 
             printPath = 1;
         }
-
         if(!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd"))
             replaceAliasMain(theAlias, s, doesContainAlias, str_replace);
 
@@ -342,25 +341,41 @@ int main()
                 if(redirectionArgc > 1) {
                     strip(redirectionArgv[1]);
                     FILE * redirectTo = fopen(redirectionArgv[1], "w");
-                    int redirectOutFD = fileno(redirectTo);
+                    if(redirectTo != NULL) {
+                        int redirectOutFD = fileno(redirectTo);
 
-                    prePipe = parsePrePipe(s, &preCount);
-                    postPipe = parsePostPipe(s, &postCount);
-                    pipeItFileOut(prePipe, postPipe, redirectOutFD);
-                    clean(preCount, prePipe);
-                    clean(postCount, postPipe);
+                        prePipe = parsePrePipe(s, &preCount);
+                        postPipe = parsePostPipe(s, &postCount);
+                        pipeItFileOut(prePipe, postPipe, redirectOutFD);
+                        clean(preCount, prePipe);
+                        clean(postCount, postPipe);
 
-                    fclose(redirectTo);
+                        fclose(redirectTo);
+                    }
                 }
 
                 clean(redirectionArgc, redirectionArgv);
             } else if (doesContain(s, "<")) {    //contains redirect TO
                 printf("In pipe WITH redirect FROM\n");
-                prePipe = parsePrePipe(s, &preCount);
-                postPipe = parsePostPipe(s, &postCount);
-                pipeIt(prePipe, postPipe);
-                clean(preCount, prePipe);
-                clean(postCount, postPipe);
+                redirectionArgc = makeargs(s, &redirectionArgv, "<");
+
+                if(redirectionArgc > 1) {
+                    strip(redirectionArgv[1]);
+                    FILE * redirectFrom = fopen(redirectionArgv[1], "r");
+                    if(redirectFrom != NULL) {
+                        int redirectOutFD = fileno(redirectFrom);
+
+                        prePipe = parsePrePipe(s, &preCount);
+                        postPipe = parsePostPipe(s, &postCount);
+                        pipeItFileIn(prePipe, postPipe, redirectOutFD);
+                        clean(preCount, prePipe);
+                        clean(postCount, postPipe);
+
+                        fclose(redirectFrom);
+                    }
+                }
+
+                clean(redirectionArgc, redirectionArgv);
             } else {
                 //printf("In pipe\n");
                 prePipe = parsePrePipe(s, &preCount);
