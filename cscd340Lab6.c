@@ -30,7 +30,7 @@ int main()
     int enter = 1;
 
     char currentPath[100];
-    int printPath = 0;
+    //int printPath = 0;
 
     char temporaryS[100];
 
@@ -84,7 +84,7 @@ int main()
                 char **aliasTempNew;
                 int iATempNew;
 
-                iATempNew = makeargs(temp, &aliasTempNew, "=");
+                iATempNew = makeargs(tempSpaces, &aliasTempNew, "=");
 
                 //printf("aliasTemp[0]: %s\n", aliasTempNew[0]); //alias ll
                 //printf("aliasTemp[1]: %s\n", aliasTempNew[1]); //'ls -al | wc -w'
@@ -121,7 +121,7 @@ int main()
                 strcpy(currentPath, temp);
 
                 putenv(currentPath);
-                printPath = 1;
+                //printPath = 1;
             }
 
             fgets(temp, MAX, finMSSHRC);
@@ -331,7 +331,7 @@ int main()
 
             putenv(currentPath);
 
-            printPath = 1;
+            //printPath = 1;
         }
 
         if(!startsWith(s, "alias") && !startsWith(s, "!") && !startsWith(s, "history") && !startsWith(s, "unalias") && !startsWith(s, "path") && !startsWith(s, "cd")) {
@@ -558,7 +558,7 @@ int main()
         }
     }// end while
 
-    //printf("Create .msshrc file\n");
+    /*
     FILE * foutMSSHRC = fopen(".msshrc", "w");
     if(foutMSSHRC != NULL) {
         //printf(".msshrc created\n");
@@ -575,6 +575,7 @@ int main()
 
         fclose(foutMSSHRC);
     }
+    */
 
     //printf("Create .mssh_history file\n");
     FILE * foutHISTORY = fopen(".mssh_history", "w");
