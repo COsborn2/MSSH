@@ -1,3 +1,0 @@
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/cameronosborn/Google Drive/EWU/Junior Year/Fall Quarter/CSCD 340 - Operating Systems/Lab6/cmake-build-debug/CMakeFiles/Lab6.dir
