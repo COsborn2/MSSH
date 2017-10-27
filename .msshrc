@@ -1,0 +1,5 @@
+HISTCOUNT=10
+HISTFILECOUNT=100
+alias LA='ls -al'
+alias test='ls'
+
