@@ -1,0 +1,26 @@
+209
+total 0
+drwxr-xr-x 1 cameronosborn cameronosborn    736 Oct 17 17:46 .
+drwxr-xr-x 1 cameronosborn cameronosborn    512 Oct 13 22:35 ..
+drwxr-xr-x 1 cameronosborn cameronosborn    160 Oct 16 14:34 alias
+drwxr-xr-x 1 cameronosborn cameronosborn    224 Oct 12 09:13 cmake-build-debug
+-rw-r--r-- 1 cameronosborn cameronosborn    666 Oct 12 09:13 CMakeLists.txt
+-rw-r--r-- 1 cameronosborn cameronosborn 198616 Oct  9 09:31 cscd340_f17_lab6.pdf
+-rw-r--r-- 1 cameronosborn cameronosborn  21390 Oct 17 17:46 cscd340Lab6.c
+-rw-r--r-- 1 cameronosborn cameronosborn  25400 Oct 17 09:29 cscd340Lab6.pdf
+-rw-r--r-- 1 cameronosborn cameronosborn   8196 Oct 17 13:25 .DS_Store
+drwxr-xr-x 1 cameronosborn cameronosborn    416 Oct 17 17:46 .git
+drwxr-xr-x 1 cameronosborn cameronosborn    160 Oct 13 21:49 history
+drwxr-xr-x 1 cameronosborn cameronosborn    224 Oct 17 17:46 .idea
+-rw-rw-r-- 1 cameronosborn cameronosborn     15 Oct 17 17:46 in.txt
+drwx------ 1 cameronosborn cameronosborn    320 Oct 16 14:19 linkedlist
+-rw-r--r-- 1 cameronosborn cameronosborn   2301 Oct 15 02:18 Makefile
+-rwxrwxr-x 1 cameronosborn cameronosborn  37328 Oct 17 17:46 mssh
+-rw------- 1 cameronosborn cameronosborn 243515 Oct 17 13:25 osbornclab6.zip
+drwx------ 1 cameronosborn cameronosborn    192 Oct 17 13:23 pipes
+drwx------ 1 cameronosborn cameronosborn    192 Oct 15 18:40 process
+-rw-r--r-- 1 cameronosborn cameronosborn   5522 Oct 17 12:44 ShellTest.c
+-rw-rw-r-- 1 cameronosborn cameronosborn      4 Oct 17 17:46 test.txt
+drwx------ 1 cameronosborn cameronosborn    192 Oct 16 09:02 tokenize
+drwx------ 1 cameronosborn cameronosborn    256 Oct 17 11:48 utils
+18
